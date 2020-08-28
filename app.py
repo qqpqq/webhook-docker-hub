@@ -1,5 +1,4 @@
 import os
-import http
 from flask import Flask
 
 
@@ -8,8 +7,9 @@ app = Flask(__name__)
 
 @app.route("/web-hook")
 def deploy():
-    os.system("deploy.sh")
-    return http.HTTPStatus.OK
+    
+    os.system(os.path.dirname(os.path.abspath("__file__"))+"/deploy.sh")
+    return "OK"
 
 
 if __name__ == '__main__':
